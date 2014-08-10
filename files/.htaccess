@@ -1,0 +1,56 @@
+RewriteEngine On
+
+AddType image/svg+xml .svg
+AddType image/svg+xml .svgz
+
+#RewriteCond %{HTTP:Accept-Encoding} gzip
+#RewriteCond %{REQUEST_FILENAME} \.js$ [OR]
+#RewriteCond %{REQUEST_FILENAME} \.css$
+#RewriteCond %{REQUEST_FILENAME} !\.gz$
+#RewriteCond %{REQUEST_FILENAME}\.gz -s
+#RewriteRule .+ %{REQUEST_URI}.gz
+
+RewriteCond %{HTTP:Accept-Encoding} gzip
+RewriteCond %{REQUEST_FILENAME} !\.gz$
+RewriteCond %{REQUEST_FILENAME}\.gz -s
+RewriteCond %{REQUEST_FILENAME} \.js$ [OR]
+RewriteCond %{REQUEST_FILENAME} \.css$
+RewriteRule .+ %{REQUEST_URI}.gz
+
+#RewriteCond %{HTTP:Accept-Encoding} gzip
+#RewriteCond %{REQUEST_FILENAME} !\.gz$
+#RewriteCond %{REQUEST_FILENAME}\.gz -s
+#RewriteRule .+ %{REQUEST_URI}.gz
+
+<FilesMatch "\.js\.gz$">
+    ForceType application/x-javascript
+    AddEncoding x-gzip .gz
+</FilesMatch>
+
+<FilesMatch "\.css\.gz$">
+    ForceType text/css
+    AddEncoding x-gzip .gz
+</FilesMatch>
+
+
+##### chache setting #####
+<ifModule mod_expires.c>
+ExpiresActive On
+
+ExpiresDefault "access plus 30 minutes"
+ExpiresByType image/x-icon "access plus 1 month"
+
+ExpiresByType text/html "access plus 1 hours"
+ExpiresByType text/css "access plus 1 hours"
+ExpiresByType text/x-javascript "access plus 7 days"
+ExpiresByType application/javascript "access plus 2 weeks"
+ExpiresByType application/x-javascript "access plus 2 weeks"
+
+ExpiresByType image/jpg "access plus 7 days"
+ExpiresByType image/jpeg "access plus 7 days"
+ExpiresByType image/gif "access plus 7 days"
+ExpiresByType image/png "access plus 7 days"
+
+ExpiresByType application/pdf "access plus 7 days"
+ExpiresByType application/x-shockwave-flash "access plus 2 weeks"
+</ifModule>

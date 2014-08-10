@@ -1,0 +1,143 @@
+@import 'base.scss';
+
+html,body {
+	width:100%;
+	height: 100%;
+	font-family:"ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+}
+
+$side: #64401f;
+$back-panel: #deba84;
+
+
+%pseudo-side-panel {
+	content: '';
+	position: absolute;
+	width: 100px;
+	height: 100%;
+	background: $side;
+}
+
+%pseudo-back-panel {
+	content: '';
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background: $back-panel;
+}
+
+@mixin white-page($rotate,$hov-rotate) {
+	&:before {
+		content: '';
+		width: inherit;
+		height: 100%;
+		position: absolute;
+		transform: rotateY($rotate);
+		transform-origin: left;
+		background: orange;
+		transition: all .8s ease-out,z-index .6s ease;
+	}
+	> .detail {
+		&:before {
+			content: '';
+			width: inherit;
+			height: 100%;
+			position: absolute;
+			transform: rotateY(($rotate * 0.6));
+			transform-origin: left;
+			background: yellow;
+			transition: all .8s ease-out,z-index .6s ease;
+		}
+	}
+	&:hover {
+		&:before {
+			transform: rotateY($hov-rotate);
+		}
+		> .detail {
+			&:before {
+				transform: rotateY(($hov-rotate * 0.6));
+			}
+		}
+	}
+}
+
+
+
+#wrapper {
+//	padding: 0 10px;
+	#gNav {
+		position: relative;
+		background: #e6c794;
+		.logo {
+			color: #fff;
+		}
+		.menu {
+			position: absolute;
+			top: 0;
+			right: 0;
+			li {
+				display: inline-block;
+				margin-right: 16px;
+				a {
+					color: #fff;
+				}
+			}
+		}
+	}//gNav
+	#archive-stand {
+		position: relative;
+		transform-style: preserve-3d;
+		perspective: 800px;
+		min-height: 100px;
+		&:before,&:after {
+			@extend %pseudo-side-panel;
+		}
+		&:before {
+			transform: rotateY(-90deg);
+		}
+		&:after {
+			top:0;
+			right: 0;
+			transform: rotateY(90deg);
+		}
+		.shelf {
+			transform-style: preserve-3d;
+			perspective: 800px;
+			width: 100%;
+			min-height: 100px;
+			&:before,&:after {
+				@extend %pseudo-back-panel;
+			}
+			&:before {
+
+				transform: rotateX(10deg) translateZ(-10px);
+				box-shadow: inset 0px 13px 10px 7px rgba(64, 28, 7, .5),
+							inset 0px 26px 32px 8px rgba(123, 83, 46, 0.9);
+			}
+			&:after {
+				transform: rotateX(90deg);
+			}
+			.item-list {
+				padding: 0 100px;
+				@extend .cf;
+				li {
+					float: left;
+					.item {
+						transform-style: preserve-3d;
+						perspective: 1000px;
+						width: 80px;
+						min-height: 100px;
+						cursor: pointer;
+						margin-right: 10px;
+						@include white-page(-8deg,-126deg);
+						.detail {
+							width: 100%;
+							min-height: 100px;
+							background: #e8e8e8;
+						}//detail
+					}//.item
+				}
+			}//.item-list
+		}//.shelf
+	}//archive-stand
+}
