@@ -1,0 +1,111 @@
+/* CSS Document */
+/* line 7, ../sass/base.scss */
+*, html, body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, label, fieldset, input, p, blockquote, th, td {
+  margin: 0;
+  padding: 0;
+}
+
+/* line 8, ../sass/base.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* line 9, ../sass/base.scss */
+fieldset, img {
+  border: 0;
+}
+
+/* line 10, ../sass/base.scss */
+address, caption, cite, code, dfn, em, strong, th, var {
+  font-style: normal;
+  font-weight: normal;
+}
+
+/* line 11, ../sass/base.scss */
+ol, ul, li {
+  list-style: none;
+}
+
+/* line 12, ../sass/base.scss */
+caption, th {
+  text-align: left;
+}
+
+/* line 13, ../sass/base.scss */
+h1, h2, h3, h4, h5, h6 {
+  font-size: 100%;
+  font-weight: normal;
+}
+
+/* line 14, ../sass/base.scss */
+q:before, q:after {
+  content: '';
+}
+
+/* line 16, ../sass/base.scss */
+strong {
+  font-weight: bold;
+}
+
+/* line 17, ../sass/base.scss */
+em {
+  font-style: italic;
+}
+
+/* line 18, ../sass/base.scss */
+img {
+  border: none;
+}
+
+/* line 23, ../sass/base.scss */
+.cf:before, .cf:after {
+  content: "";
+  display: table;
+}
+
+/* line 24, ../sass/base.scss */
+.cf:after {
+  clear: both;
+}
+
+/* line 25, ../sass/base.scss */
+.cf {
+  *zoom: 1;
+}
+
+/* ==============================
+	bg shorter ::aoki
+	use // @include bg(color,'hoge.ext',repeat(0 or R or X or Y),x-pos,y-pos);
+============================== */
+/* ==============================
+	changeable list ::aoki
+	use	// @include setWid($classList,$WtidhList);
+============================== */
+/* setParam */
+/* setParam */
+/* === center  === */
+/* === i tag === */
+/* === pseudo classes === */
+/* === font-size List 1-30 === */
+/*end*/
+/* === header tab === */
+/* === header Nav === */
+/* === noise base64 2kb === */
+/* === ie7,8 opacity fix === */
+/* === ie7,8 min-height === */
+/* ==============================
+			extends
+============================== */
+/* !!!ie7 not works!!! */
+/* ----------------------------------------------------------
+						web fonts
+---------------------------------------------------------- */
+/* ----------------------------------------------------------
+						fix
+---------------------------------------------------------- */
+/* line 201, ../sass/base.scss */
+a {
+  text-decoration: none;
+  color: #000;
+}

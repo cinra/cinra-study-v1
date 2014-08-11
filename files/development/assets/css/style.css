@@ -1,0 +1,248 @@
+@charset "UTF-8";
+/* CSS Document */
+/* line 7, ../sass/base.scss */
+*, html, body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, label, fieldset, input, p, blockquote, th, td {
+  margin: 0;
+  padding: 0;
+}
+
+/* line 8, ../sass/base.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* line 9, ../sass/base.scss */
+fieldset, img {
+  border: 0;
+}
+
+/* line 10, ../sass/base.scss */
+address, caption, cite, code, dfn, em, strong, th, var {
+  font-style: normal;
+  font-weight: normal;
+}
+
+/* line 11, ../sass/base.scss */
+ol, ul, li {
+  list-style: none;
+}
+
+/* line 12, ../sass/base.scss */
+caption, th {
+  text-align: left;
+}
+
+/* line 13, ../sass/base.scss */
+h1, h2, h3, h4, h5, h6 {
+  font-size: 100%;
+  font-weight: normal;
+}
+
+/* line 14, ../sass/base.scss */
+q:before, q:after {
+  content: '';
+}
+
+/* line 16, ../sass/base.scss */
+strong {
+  font-weight: bold;
+}
+
+/* line 17, ../sass/base.scss */
+em {
+  font-style: italic;
+}
+
+/* line 18, ../sass/base.scss */
+img {
+  border: none;
+}
+
+/* line 23, ../sass/base.scss */
+.cf:before, #wrapper #archive-stand .shelf .item-list:before, .cf:after, #wrapper #archive-stand .shelf .item-list:after {
+  content: "";
+  display: table;
+}
+
+/* line 24, ../sass/base.scss */
+.cf:after, #wrapper #archive-stand .shelf .item-list:after {
+  clear: both;
+}
+
+/* line 25, ../sass/base.scss */
+.cf, #wrapper #archive-stand .shelf .item-list {
+  *zoom: 1;
+}
+
+/* ==============================
+	bg shorter ::aoki
+	use // @include bg(color,'hoge.ext',repeat(0 or R or X or Y),x-pos,y-pos);
+============================== */
+/* ==============================
+	changeable list ::aoki
+	use	// @include setWid($classList,$WtidhList);
+============================== */
+/* setParam */
+/* setParam */
+/* === center  === */
+/* === i tag === */
+/* === pseudo classes === */
+/* === font-size List 1-30 === */
+/*end*/
+/* === header tab === */
+/* === header Nav === */
+/* === noise base64 2kb === */
+/* === ie7,8 opacity fix === */
+/* === ie7,8 min-height === */
+/* ==============================
+			extends
+============================== */
+/* !!!ie7 not works!!! */
+/* ----------------------------------------------------------
+						web fonts
+---------------------------------------------------------- */
+/* ----------------------------------------------------------
+						fix
+---------------------------------------------------------- */
+/* line 201, ../sass/base.scss */
+a {
+  text-decoration: none;
+  color: #000;
+}
+
+/* line 3, ../sass/style.scss */
+html, body {
+  width: 100%;
+  height: 100%;
+  font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+}
+
+/* line 13, ../sass/style.scss */
+#wrapper #archive-stand:before, #wrapper #archive-stand:after {
+  content: '';
+  position: absolute;
+  width: 100px;
+  height: 100%;
+  background: #64401f;
+}
+
+/* line 21, ../sass/style.scss */
+#wrapper #archive-stand .shelf:before, #wrapper #archive-stand .shelf:after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #deba84;
+}
+
+/* line 68, ../sass/style.scss */
+#wrapper #gNav {
+  position: relative;
+  background: #e6c794;
+}
+/* line 71, ../sass/style.scss */
+#wrapper #gNav .logo {
+  color: #fff;
+}
+/* line 74, ../sass/style.scss */
+#wrapper #gNav .menu {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+/* line 78, ../sass/style.scss */
+#wrapper #gNav .menu li {
+  display: inline-block;
+  margin-right: 16px;
+}
+/* line 81, ../sass/style.scss */
+#wrapper #gNav .menu li a {
+  color: #fff;
+}
+/* line 87, ../sass/style.scss */
+#wrapper #archive-stand {
+  position: relative;
+  transform-style: preserve-3d;
+  perspective: 800px;
+  min-height: 100px;
+}
+/* line 95, ../sass/style.scss */
+#wrapper #archive-stand:before {
+  transform: rotateY(-90deg);
+}
+/* line 98, ../sass/style.scss */
+#wrapper #archive-stand:after {
+  top: 0;
+  right: 0;
+  transform: rotateY(90deg);
+}
+/* line 103, ../sass/style.scss */
+#wrapper #archive-stand .shelf {
+  transform-style: preserve-3d;
+  perspective: 800px;
+  width: 100%;
+  min-height: 100px;
+}
+/* line 111, ../sass/style.scss */
+#wrapper #archive-stand .shelf:before {
+  transform: rotateX(10deg) translateZ(-10px);
+  box-shadow: inset 0px 13px 10px 7px rgba(64, 28, 7, 0.5), inset 0px 26px 32px 8px rgba(123, 83, 46, 0.9);
+}
+/* line 117, ../sass/style.scss */
+#wrapper #archive-stand .shelf:after {
+  transform: rotateX(90deg);
+}
+/* line 120, ../sass/style.scss */
+#wrapper #archive-stand .shelf .item-list {
+  padding: 0 100px;
+}
+/* line 123, ../sass/style.scss */
+#wrapper #archive-stand .shelf .item-list li {
+  float: left;
+}
+/* line 125, ../sass/style.scss */
+#wrapper #archive-stand .shelf .item-list li .item {
+  transform-style: preserve-3d;
+  perspective: 1000px;
+  width: 80px;
+  min-height: 100px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+/* line 30, ../sass/style.scss */
+#wrapper #archive-stand .shelf .item-list li .item:before {
+  content: '';
+  width: inherit;
+  height: 100%;
+  position: absolute;
+  transform: rotateY(-8deg);
+  transform-origin: left;
+  background: orange;
+  transition: all .8s ease-out,z-index .6s ease;
+}
+/* line 41, ../sass/style.scss */
+#wrapper #archive-stand .shelf .item-list li .item > .detail:before {
+  content: '';
+  width: inherit;
+  height: 100%;
+  position: absolute;
+  transform: rotateY(-4.8deg);
+  transform-origin: left;
+  background: yellow;
+  transition: all .8s ease-out,z-index .6s ease;
+}
+/* line 53, ../sass/style.scss */
+#wrapper #archive-stand .shelf .item-list li .item:hover:before {
+  transform: rotateY(-126deg);
+}
+/* line 57, ../sass/style.scss */
+#wrapper #archive-stand .shelf .item-list li .item:hover > .detail:before {
+  transform: rotateY(-75.6deg);
+}
+/* line 133, ../sass/style.scss */
+#wrapper #archive-stand .shelf .item-list li .item .detail {
+  width: 100%;
+  min-height: 100px;
+  background: #e8e8e8;
+}
