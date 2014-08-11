@@ -8,14 +8,14 @@ module.exports = function(grunt){
   grunt.loadNpmTasks('grunt-contrib-compass');
   grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-autoprefixer');
+  //grunt.loadNpmTasks('grunt-csscomb');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-htmlmin');
   grunt.loadNpmTasks('grunt-contrib-compress');
   grunt.loadNpmTasks('grunt-contrib-imagemin');
-  //grunt.loadNpmTasks('grunt-svgmin');
   grunt.loadNpmTasks('grunt-contrib-copy');
-  grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.loadNpmTasks('grunt-svgmin');
 
   // 各タスクの設定
   grunt.initConfig({
@@ -35,54 +35,47 @@ module.exports = function(grunt){
             }
         },
         watch: {
-			html: {
-			    files: '<%= dir.src %>/*.html',
-				tasks: ['htmlmin'],
-                options: {
-                    //変更されたらブラウザを更新
-                    livereload: true,
-                    nospawn: true
-                }
-			},
-            sass: {
-                files: ['<%= dir.src %>/assets/sass/*.scss'],
-                tasks: ['compass', 'cssmin', 'autoprefixer', 'compress'],
-                options: {
-                    //変更されたらブラウザを更新
-                    livereload: true,
-                    nospawn: true
-                }
-            },
-            js: {
-                files: ['<%= dir.src %>/assets/js/*.js'],
-                tasks: ['uglify', 'compress'],
-                options: {
-                    //変更されたらブラウザを更新
-                    livereload: true,
-                    nospawn: true
-                }
-            }/*,
-            images: {
-                files: ['<%= dir.src %>/assets/images/*.{png,jpg,gif}'],
-                tasks: ['imagemin', 'copy', 'clean'],
-                options: {
-                    //変更されたらブラウザを更新
-                    livereload: true,
-                    nospawn: true
-                }
-            },
-
-            svg: {
-                files: ['<%= dir.src %>/assets/images/*.svg'],
-                tasks: ['svgmin'],
-                options: {
-                    //変更されたらブラウザを更新
-                    livereload: true,
-                    nospawn: true
-                }
+    			html: {
+    			  files: '<%= dir.src %>/*.html',
+    				tasks: ['htmlmin'],
+              options: {
+                //変更されたらブラウザを更新
+                livereload: true,
+                nospawn: true
+              }
+    			},
+          sass: {
+            files: ['<%= dir.src %>/assets/sass/*.scss'],
+            tasks: ['compass', 'cssmin', 'autoprefixer', 'compress'],
+            options: {
+                //変更されたらブラウザを更新
+                livereload: true,
+                nospawn: true
             }
-			*/
-		}, //watchココマデ
+          },
+          js: {
+              files: ['<%= dir.src %>/assets/js/*.js'],
+              tasks: ['uglify', 'compress'],
+              options: {
+                  //変更されたらブラウザを更新
+                  livereload: true,
+                  nospawn: true
+              }
+          },
+    			image: {
+    				files : ['<%= dir.src %>/assets/images/*.{svg,png,jpg,jpeg,gif}'],
+    				tasks : ['svgmin, imagemin, livereload']
+    			},
+    			font: {
+    				files : ['<%= dir.src %>/assets/fonts/**'],
+    				tasks : ['copy'],
+            options: {
+                //変更されたらブラウザを更新
+                livereload: true,
+                nospawn: true
+            }
+    			}
+        },
 		htmlmin: {
             all: {
                 options: {
@@ -100,17 +93,27 @@ module.exports = function(grunt){
             }
         },
 		imagemin: {
-			options: {
-				//0-7
-				optimizationLevel: 3,
+			static: {
+				files: {
+					expand: true,
+					cwd: '<%= dir.src %>/assets/images/',
+					src: ['*.{png,jpg}'],
+					dest: '<%= dir.dest %>/assets/images/'
+				},
+				options: {
+					//0-7
+					optimizationLevel: 3
+				}
 			},
-			files: {
-				expand: true,
-				cwd: '<%= dir.src %>/assets/images/',
-				src: ['**/*.{png,jpg,gif}'],
-				dest: '<%= dir.dest %>/assets/images/'
+			dynamic: {
+				files: {
+					expand: true,
+					cwd: '<%= dir.src %>/assets/images/',
+					src: ['*.{png,jpg}'],
+					dest: '<%= dir.dest %>/assets/images/'
+				}
 			}
-		},/*
+		},
 		svgmin: {
 			options: {
 				plugins: [
@@ -124,7 +127,16 @@ module.exports = function(grunt){
 				src: ['*.svg'],
 				dest: '<%= dir.dest %>/assets/images/'
 			}
-		},*/
+		},
+        /* csscombでCSSプロパティを揃えます。
+        csscomb:{
+            dev:{
+                expand: true,
+                cwd: '<%= dir.src %>/sass/',
+                src: ['*.scss'],
+                dest: '<%= dir.src %>/css/'
+            }
+        },*/
         // cssmin: cssをミニファイ、結合
         cssmin: {
             combine: {
@@ -169,33 +181,6 @@ module.exports = function(grunt){
 				dest: '<%= dir.dest %>/assets/js/script.min.js'
             }
         },
-		copy: {
-			main: {
-				options: {
-					flatten: true
-				},
-				files: [
-						{
-							expand: true,
-							cwd: '<%= dir.src %>/assets/images/',
-							src: ['**/*.svg'],
-							dest: '<%= dir.dest %>/assets/images/',
-							filter: 'isFile'
-						},
-						{
-							expand: true,
-							//flatten: true,
-							cwd: '<%= dir.src %>/assets/images/',
-							src: ['**/*.{png,jpg,gif}'],
-							dest: '<%= dir.src %>/assets/_cmp/',
-							filter: 'isFile'
-						}
-					]
-			}
-		},
-		clean: {
-			build: ["<%= dir.src %>/assets/images/*"]
-		},
         // Live Reload
         connect: {
             livereload: {
@@ -211,6 +196,16 @@ module.exports = function(grunt){
             }
         },
         //gzip化
+    copy: {
+      main: {
+        files: {
+          expand : true,
+          cwb : '<%= dir.src %>/assets/fonts/',
+          src : '**',
+          dest: '<%= dir.dest %>/assets/fonts/',
+        },
+      },
+    },
 		compress: {
 			main: {
 				options: {
@@ -240,5 +235,5 @@ module.exports = function(grunt){
 
   // gruntコマンドで実行するタスクの設定
   grunt.registerTask('default', ['connect', 'open', 'watch']);
-  grunt.registerTask('build', ['imagemin',/* 'svgmin'*/ 'copy', 'clean']);
+  //grunt.registerTask('prod', ['uglify', 'htmlmin']);
 };
