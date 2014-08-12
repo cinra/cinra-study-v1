@@ -75,37 +75,43 @@ img {
   *zoom: 1;
 }
 
-/* ==============================
-	bg shorter ::aoki
-	use // @include bg(color,'hoge.ext',repeat(0 or R or X or Y),x-pos,y-pos);
-============================== */
-/* ==============================
-	changeable list ::aoki
-	use	// @include setWid($classList,$WtidhList);
-============================== */
-/* setParam */
-/* setParam */
-/* === center  === */
-/* === i tag === */
-/* === pseudo classes === */
-/* === font-size List 1-30 === */
-/*end*/
-/* === header tab === */
-/* === header Nav === */
-/* === noise base64 2kb === */
-/* === ie7,8 opacity fix === */
-/* === ie7,8 min-height === */
-/* ==============================
-			extends
-============================== */
-/* !!!ie7 not works!!! */
-/* ----------------------------------------------------------
-						web fonts
----------------------------------------------------------- */
-/* ----------------------------------------------------------
-						fix
----------------------------------------------------------- */
-/* line 201, ../sass/base.scss */
+/* line 166, ../sass/base.scss */
+#wrapper #archive-stand .shelf:before, #wrapper #archive-stand .shelf:after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #deba84;
+}
+
+/* line 174, ../sass/base.scss */
+.ff-stark {
+  font-family: 'Stark', sans-serif;
+  font-weight: 100;
+}
+
+/* line 179, ../sass/base.scss */
+.ff-tend, #head {
+  font-family: 'tenderness';
+  font-weight: 100;
+}
+
+/* line 184, ../sass/base.scss */
+.letter-press, #head .logo, #head #g-nav .menu li a {
+  text-shadow: -1px -1px 2px #223a2f;
+}
+
+@font-face {
+  font-family: 'Stark';
+  src: url("../fonts/Stark.otf") format("opentype");
+}
+
+@font-face {
+  font-family: 'tenderness';
+  src: url("../fonts/tenderness.otf") format("opentype");
+}
+
+/* line 206, ../sass/base.scss */
 a {
   text-decoration: none;
   color: #000;
@@ -118,99 +124,146 @@ html, body {
   font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
 }
 
-/* line 13, ../sass/style.scss */
-#wrapper #archive-stand:before, #wrapper #archive-stand:after {
-  content: '';
+/* line 9, ../sass/style.scss */
+#head {
+  position: relative;
+  min-height: 60px;
+  background: linear-gradient(#406d59 0%, #223a2f 80%, #0f1a15 100%);
+  box-shadow: 0px 6px 5px -5px rgba(15, 26, 21, 0.9);
+  z-index: 10;
+}
+/* line 16, ../sass/style.scss */
+#head .logo {
   position: absolute;
-  width: 100px;
-  height: 100%;
-  background: #64401f;
+  top: 50%;
+  left: 50%;
+  color: #fff;
+  font-size: 30px;
+  transform: translateX(-50%) translateY(-50%);
+}
+/* line 25, ../sass/style.scss */
+#head #g-nav {
+  position: absolute;
+  top: 50%;
+  right: 5px;
+  transform: translateY(-50%);
+}
+/* line 31, ../sass/style.scss */
+#head #g-nav .menu li {
+  display: inline-block;
+  margin-right: 10px;
+}
+/* line 34, ../sass/style.scss */
+#head #g-nav .menu li a {
+  display: block;
+  width: 40px;
+  min-height: 40px;
+  color: #fff;
+  background: linear-gradient(#315444 0%, #192a22 100%);
+  border-radius: 4px;
+  border-top: 1px solid rgba(152, 195, 175, 0.8);
+  box-shadow: 0px 0px 0px 1px black, 0px 0px 0px 1px #98c3af;
+  font-size: 24px;
+}
+/* line 45, ../sass/style.scss */
+#head #g-nav .menu li a:active {
+  background: linear-gradient(#223a2f 0%, #0f1a15 100%);
 }
 
-/* line 21, ../sass/style.scss */
-#wrapper #archive-stand .shelf:before, #wrapper #archive-stand .shelf:after {
-  content: '';
-  position: absolute;
+/* line 54, ../sass/style.scss */
+#wrapper {
+  position: relative;
   width: 100%;
   height: 100%;
-  background: #deba84;
+  padding: 0 10px;
+  box-sizing: border-box;
 }
-
-/* line 68, ../sass/style.scss */
-#wrapper #gNav {
-  position: relative;
-  background: #e6c794;
-}
-/* line 71, ../sass/style.scss */
-#wrapper #gNav .logo {
-  color: #fff;
-}
-/* line 74, ../sass/style.scss */
-#wrapper #gNav .menu {
+/* line 60, ../sass/style.scss */
+#wrapper:before, #wrapper:after {
+  content: '';
   position: absolute;
   top: 0;
+  width: 10%;
+  height: 100%;
+  background: #4b351a;
+  background: -moz-linear-gradient(left, #4b351a 0%, #4b351a 100%);
+  background: -webkit-gradient(linear, left top, right top, color-stop(0%, #4b351a), color-stop(100%, #4b351a));
+  background: -webkit-linear-gradient(left, #4b351a 0%, #4b351a 100%);
+  background: -o-linear-gradient(left, #4b351a 0%, #4b351a 100%);
+  background: -ms-linear-gradient(left, #4b351a 0%, #4b351a 100%);
+  background: linear-gradient(to right, #4b351a 0%, #4b351a 100%);
+  z-index: -1;
+}
+/* line 76, ../sass/style.scss */
+#wrapper:before {
+  transform: rotateY(30deg) translateX(-30%);
+}
+/* line 79, ../sass/style.scss */
+#wrapper:after {
+  transform: rotateY(-30deg) translateX(30%);
   right: 0;
 }
-/* line 78, ../sass/style.scss */
-#wrapper #gNav .menu li {
-  display: inline-block;
-  margin-right: 16px;
+/* line 84, ../sass/style.scss */
+#wrapper #nav-panel {
+  position: relative;
+  min-height: 50px;
+  background: #e4ceb3;
+  box-shadow: 0px 20px 26px -10px #4b351a;
+  z-index: 6;
 }
-/* line 81, ../sass/style.scss */
-#wrapper #gNav .menu li a {
-  color: #fff;
-}
-/* line 87, ../sass/style.scss */
+/* line 105, ../sass/style.scss */
 #wrapper #archive-stand {
   position: relative;
   transform-style: preserve-3d;
   perspective: 800px;
   min-height: 100px;
 }
-/* line 95, ../sass/style.scss */
+/* line 110, ../sass/style.scss */
 #wrapper #archive-stand:before {
   transform: rotateY(-90deg);
 }
-/* line 98, ../sass/style.scss */
+/* line 113, ../sass/style.scss */
 #wrapper #archive-stand:after {
   top: 0;
   right: 0;
   transform: rotateY(90deg);
 }
-/* line 103, ../sass/style.scss */
+/* line 118, ../sass/style.scss */
 #wrapper #archive-stand .shelf {
   transform-style: preserve-3d;
   perspective: 800px;
   width: 100%;
-  min-height: 100px;
+  min-height: 140px;
 }
-/* line 111, ../sass/style.scss */
+/* line 126, ../sass/style.scss */
 #wrapper #archive-stand .shelf:before {
-  transform: rotateX(10deg) translateZ(-10px);
+  transform: rotateX(10deg) translateY(-10px) translateZ(-10px);
   box-shadow: inset 0px 13px 10px 7px rgba(64, 28, 7, 0.5), inset 0px 26px 32px 8px rgba(123, 83, 46, 0.9);
 }
-/* line 117, ../sass/style.scss */
+/* line 132, ../sass/style.scss */
 #wrapper #archive-stand .shelf:after {
-  transform: rotateX(90deg);
+  height: 10px;
+  bottom: 0;
+  border-radius: 2px;
 }
-/* line 120, ../sass/style.scss */
+/* line 138, ../sass/style.scss */
 #wrapper #archive-stand .shelf .item-list {
-  padding: 0 100px;
+  padding: 20px 100px 10px;
 }
-/* line 123, ../sass/style.scss */
+/* line 141, ../sass/style.scss */
 #wrapper #archive-stand .shelf .item-list li {
   float: left;
 }
-/* line 125, ../sass/style.scss */
+/* line 143, ../sass/style.scss */
 #wrapper #archive-stand .shelf .item-list li .item {
   transform-style: preserve-3d;
   perspective: 1000px;
   width: 80px;
-  min-height: 100px;
+  min-height: 120px;
   cursor: pointer;
   margin-right: 10px;
 }
-/* line 30, ../sass/style.scss */
+/* line 115, ../sass/base.scss */
 #wrapper #archive-stand .shelf .item-list li .item:before {
   content: '';
   width: inherit;
@@ -218,10 +271,10 @@ html, body {
   position: absolute;
   transform: rotateY(-8deg);
   transform-origin: left;
-  background: orange;
+  background: silver;
   transition: all .8s ease-out,z-index .6s ease;
 }
-/* line 41, ../sass/style.scss */
+/* line 126, ../sass/base.scss */
 #wrapper #archive-stand .shelf .item-list li .item > .detail:before {
   content: '';
   width: inherit;
@@ -229,20 +282,24 @@ html, body {
   position: absolute;
   transform: rotateY(-4.8deg);
   transform-origin: left;
-  background: yellow;
+  background: gray;
   transition: all .8s ease-out,z-index .6s ease;
 }
-/* line 53, ../sass/style.scss */
+/* line 138, ../sass/base.scss */
 #wrapper #archive-stand .shelf .item-list li .item:hover:before {
   transform: rotateY(-126deg);
 }
-/* line 57, ../sass/style.scss */
+/* line 142, ../sass/base.scss */
 #wrapper #archive-stand .shelf .item-list li .item:hover > .detail:before {
   transform: rotateY(-75.6deg);
 }
-/* line 133, ../sass/style.scss */
+/* line 151, ../sass/style.scss */
 #wrapper #archive-stand .shelf .item-list li .item .detail {
   width: 100%;
-  min-height: 100px;
+  min-height: 120px;
   background: #e8e8e8;
+}
+/* line 155, ../sass/style.scss */
+#wrapper #archive-stand .shelf .item-list li .item .detail .detail-in {
+  display: none;
 }

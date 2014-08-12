@@ -13,9 +13,10 @@ module.exports = function(grunt){
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-htmlmin');
   grunt.loadNpmTasks('grunt-contrib-compress');
-  grunt.loadNpmTasks('grunt-contrib-imagemin');
+  //grunt.loadNpmTasks('grunt-contrib-imagemin');
   grunt.loadNpmTasks('grunt-contrib-copy');
-  grunt.loadNpmTasks('grunt-svgmin');
+  //grunt.loadNpmTasks('grunt-svgmin');
+  grunt.loadNpmTasks('grunt-image');
 
   // 各タスクの設定
   grunt.initConfig({
@@ -61,20 +62,26 @@ module.exports = function(grunt){
                   livereload: true,
                   nospawn: true
               }
-          },
+          }/*,
     			image: {
-    				files : ['<%= dir.src %>/assets/images/*.{svg,png,jpg,jpeg,gif}'],
-    				tasks : ['svgmin, imagemin, livereload']
-    			},
-    			font: {
-    				files : ['<%= dir.src %>/assets/fonts/**'],
-    				tasks : ['copy'],
+    				cwd : ['<%= dir.src %>/assets/images/'],
+            files : '**',
+    				tasks : ['image'],
             options: {
                 //変更されたらブラウザを更新
                 livereload: true,
                 nospawn: true
             }
-    			}
+    			},
+    			font: {
+    				files : ['<%= dir.src %>/assets/fonts/*.otf'],
+    				tasks : ['copy:main'],
+            options: {
+                //変更されたらブラウザを更新
+                livereload: true,
+                nospawn: true
+            }
+    			}*/
         },
 		htmlmin: {
             all: {
@@ -92,50 +99,18 @@ module.exports = function(grunt){
                 dest: '<%= dir.dest %>'
             }
         },
-		imagemin: {
-			static: {
-				files: {
-					expand: true,
-					cwd: '<%= dir.src %>/assets/images/',
-					src: ['*.{png,jpg}'],
-					dest: '<%= dir.dest %>/assets/images/'
-				},
-				options: {
-					//0-7
-					optimizationLevel: 3
-				}
-			},
-			dynamic: {
-				files: {
-					expand: true,
-					cwd: '<%= dir.src %>/assets/images/',
-					src: ['*.{png,jpg}'],
-					dest: '<%= dir.dest %>/assets/images/'
-				}
-			}
-		},
-		svgmin: {
-			options: {
-				plugins: [
-					{ removeViewBox: false },
-					{ removeUselessStrokeAndFill: false }
-				]
-			},
-			files: {
-				expand: true,
-				cwd: '<%= dir.src %>/assets/images/',
-				src: ['*.svg'],
-				dest: '<%= dir.dest %>/assets/images/'
-			}
-		},
-        /* csscombでCSSプロパティを揃えます。
-        csscomb:{
-            dev:{
-                expand: true,
-                cwd: '<%= dir.src %>/sass/',
-                src: ['*.scss'],
-                dest: '<%= dir.src %>/css/'
+/*        image: {
+          static: {
+            files: {
+              
             }
+          },
+          dynamic: {
+            expand: true,
+            cwd: '<%= dir.src %>/assets/images/',
+            src: '**',
+            dest: '<%= dir.dest %>/assets/images/'
+          }
         },*/
         // cssmin: cssをミニファイ、結合
         cssmin: {
@@ -196,16 +171,17 @@ module.exports = function(grunt){
             }
         },
         //gzip化
-    copy: {
+/*    copy: {
       main: {
         files: {
           expand : true,
-          cwb : '<%= dir.src %>/assets/fonts/',
-          src : '**',
-          dest: '<%= dir.dest %>/assets/fonts/',
+					cwd: '<%= dir.src %>/assets/fonts/',
+					src: ['*{.ttf,.otf,.woff}'],
+					dest: '<%= dir.dest %>/assets/fonts/',
+					ext: '**'
         },
       },
-    },
+    },*/
 		compress: {
 			main: {
 				options: {

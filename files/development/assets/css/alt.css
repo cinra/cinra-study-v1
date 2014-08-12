@@ -75,37 +75,34 @@ img {
   *zoom: 1;
 }
 
-/* ==============================
-	bg shorter ::aoki
-	use // @include bg(color,'hoge.ext',repeat(0 or R or X or Y),x-pos,y-pos);
-============================== */
-/* ==============================
-	changeable list ::aoki
-	use	// @include setWid($classList,$WtidhList);
-============================== */
-/* setParam */
-/* setParam */
-/* === center  === */
-/* === i tag === */
-/* === pseudo classes === */
-/* === font-size List 1-30 === */
-/*end*/
-/* === header tab === */
-/* === header Nav === */
-/* === noise base64 2kb === */
-/* === ie7,8 opacity fix === */
-/* === ie7,8 min-height === */
-/* ==============================
-			extends
-============================== */
-/* !!!ie7 not works!!! */
-/* ----------------------------------------------------------
-						web fonts
----------------------------------------------------------- */
-/* ----------------------------------------------------------
-						fix
----------------------------------------------------------- */
-/* line 201, ../sass/base.scss */
+/* line 174, ../sass/base.scss */
+.ff-stark {
+  font-family: 'Stark', sans-serif;
+  font-weight: 100;
+}
+
+/* line 179, ../sass/base.scss */
+.ff-tend {
+  font-family: 'tenderness';
+  font-weight: 100;
+}
+
+/* line 184, ../sass/base.scss */
+.letter-press {
+  text-shadow: -1px -1px 2px #223a2f;
+}
+
+@font-face {
+  font-family: 'Stark';
+  src: url("../fonts/Stark.otf") format("opentype");
+}
+
+@font-face {
+  font-family: 'tenderness';
+  src: url("../fonts/tenderness.otf") format("opentype");
+}
+
+/* line 206, ../sass/base.scss */
 a {
   text-decoration: none;
   color: #000;

@@ -29,174 +29,179 @@ img { border:none }
 //		variables
 //----------------------------------------------------------
 
+$side: #64401f;
+$back-panel: #deba84;
 
+
+$head:#223a2f;
+
+$head-shadow: darken($head,5%);
+$head-light: lighten($head,8%);
+
+$head-deep-shadow: darken($head,10%);
+$head-high-light: lighten($head,16%);
+
+$head-white: lighten($head,50%);
+
+$wood: #e4ceb3;
+//$wood: #c59a6c;
+//$wood-shadow-high: darken($wood,30%);
+//$wood-shadow-low: darken($wood,50%);
+$wood-shadow-high: darken($wood,60%);
+$wood-shadow-low: darken($wood,60%);
+
+$wood-deep-shadow: darken($wood,60%);
 // ----------------------------------------------------------
 //		Mixin
 //----------------------------------------------------------
 
-/* ==============================
-	bg shorter ::aoki
-	use // @include bg(color,'hoge.ext',repeat(0 or R or X or Y),x-pos,y-pos);
-============================== */
-@mixin bg($c,$i-nam,$rp,$x,$y){
-	@if $rp == 0{
-		background:$c url('../images/#{$i-nam}') no-repeat $x $y;
-	} @else if $rp == r {
-		background:$c url('../images/#{$i-nam}') repeat;
-	} @else if $rp == x {
-		background:$c url('../images/#{$i-nam}') repeat-x;
-	} @else if $rp == y {
-		background:$c url('../images/#{$i-nam}') repeat-y;
-	}
-}
-
-/* ==============================
-	changeable list ::aoki
-	use	// @include setWid($classList,$WtidhList);
-============================== */
-/* setParam */
-$nav_class: nv_hme, nv_nws, nv_int, nv_col, nv_spe, nv_rev;
-$nav_width: 86, 106, 118, 122, 100, 106;
-
-@mixin setData($listA,$listB){
-	@for $i from 1 through length($listA) {
-		$setClass: nth($listA, $i);
-		$setWidth: nth($listB, $i);
-			&.#{$setClass} {
-				width:$setWidth+px;
-				+dd {
-					width:$setWidth - 2 +px;
-				}
-			}
-	}
-}
-
-/* setParam */
-$panel_color: #ec587f, #f15744, #268eb5, #008e61, #7253a3, #7d4331;
-
-@mixin setColor($pColor){
-	@for $i from 1 through length($pColor) {
-		$setColor: nth($pColor, $i);
-			&:nth-child(#{$i}){
-				&:hover{
-					background: $setColor;
-				}
-			}
-	}
-}
-
 // # Vendor-prefixed CSS Property
-$use-prefix-webkit: true;
-$use-prefix-moz: true;
-$use-prefix-ms: true;
-$use-prefix-o: true;
+//$use-prefix-webkit: true;
+//$use-prefix-moz: true;
+//$use-prefix-ms: true;
+//$use-prefix-o: true;
 
 
-@mixin border-radius($property-value, $property-type: shorthand) {
-
-    $property: border-radius;
-    @if $property-type != shorthand {
-        $property: border-#{$property-type}-radius;
-    }
-    // OUTPUT
-    @if $use-prefix-webkit { -webkit-#{$property}: #{$property-value}; }
-    @if $use-prefix-moz { -moz-#{$property}: #{$property-value}; }
-    #{$property}: #{$property-value};
-}
-
-/* === center  === */
-@mixin abs-cent($pc-w){
-	position: absolute;
-	width: $pc-w+px;
-	left: 50%;
-	margin-left: -$pc-w / 2 + px;
-}
-
-/* === i tag === */
-@mixin icon($i-ws,$i-hs,$i-bgn) {
-	display:block;
-	width:$i-ws;
-	height:$i-hs;
-    @if $i-bgn != null {
-		background: url(../images/#{$i-bgn}) no-repeat;
-    }
-}
-
-/* === pseudo classes === */
-@mixin after($aft-ws,$aft-hs){
-	display:block;
-	width:$aft-ws;
-	height:$aft-hs;
-}
-
-/* === font-size List 1-30 === */
-$fs: 30;
-
-@while  $fs >= 0 {
-	%fz#{$fs} {
-		font-size: $fs+px;
+// === cross_alpha (IE7,8) ===
+@mixin cross_alpha($alpLevel) {
+	$alpLevel-ie: 100;
+	@if $alpLevel < 1 {								//~.9
+		$alpLevel-ie: $alpLevel * 100;
+	} @else if $alpLevel >= 2 and $alpLevel < 100 {	//2~99
+		$alpLevel-ie: $alpLevel;
+		@if $alpLevel < 10 {						//2~9
+			$alpLevel: $alpLevel / 10;
+		} @else if $alpLevel < 100 {				//10~99
+			$alpLevel: $alpLevel / 100;
+		}
+	} @else {										//1,100~
+			$alpLevel: 1;
 	}
-	$fs: $fs - 1;
-}/*end*/
-
-/* === header tab === */
-@mixin tab-line($line-color){
-	border-top:1px solid $line-color;
-	border-right:1px solid $line-color;
-	border-left:1px solid $line-color;
+	filter: alpha(opacity=#{$alpLevel-ie});
+	-ms-filter: alpha(opacity=#{$alpLevel-ie});
+	opacity: $alpLevel;
 }
 
-/* === header Nav === */
-@mixin nav-line($line-color){
-	border-right:1px solid $line-color;
-	border-bottom:1px solid $line-color;
-	border-left:1px solid $line-color;
+$prefix-list: '', -ms-, -moz-, -webkit-;
+@mixin auto-prefix($prop-name, $prop-dtl, $prop-dtl-pref:null) {
+  @if $prop-dtl-pref == null {
+  	@each $ap-prefix in $prefix-list {
+  		#{$ap-prefix}#{$prop-name}: $prop-dtl;
+  	}
+  } @else {
+  	@each $ap-prefix in $prefix-list {
+  		#{$ap-prefix}#{$prop-name}: #{$ap-prefix}$prop-dtl-pref $prop-dtl;
+  	}
+  }
 }
 
-/* === noise base64 2kb === */
-@mixin noise($n-bgc){
-			background:$n-bgc url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6M0Y5NEFDNjE4QkVBMTFFMzk3M0Q4REI2NTU3NzA4RkYiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6M0Y5NEFDNjI4QkVBMTFFMzk3M0Q4REI2NTU3NzA4RkYiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpDRTIzQkREQzhCRTkxMUUzOTczRDhEQjY1NTc3MDhGRiIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDozRjk0QUM2MDhCRUExMUUzOTczRDhEQjY1NTc3MDhGRiIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/Pv5WL5oAAATpSURBVHjaLFVrTI5vGL+u+3nejshILNM0p03NYUhMJNIHYQ4lmTkNLc3MjLUJ9cEnh5VPNj5VpMycxoY2tBKxnDUZcqzIoUT29tzX/3c9+7e969373s99/U7X72Uiir5y5Upw06ZN7suXL72qqirp6uqi7Oxs0r/U1FRn48aNHr7n8vJymTp1KpWVlZn09HR79+5d7uvr48mTJ9vXr1/zq1ev2B01apR9+vQpBQIBKS0tlS9fvvD3798JF/OZM2dse3u7aWhokISEBDt9+nQKDQ2l379/U1xcHA0dOlS2bdvmRkZGyujRo0mfcy5fvhzy5s0bWrx4sRw6dMgFOt6zZ49eRJMmTSJMpe3bt9tfv34RmPDs2bNpzJgxMmTIEPrw4QPNnTvXdnZ28t69e2X48OHiTJkyJWz8+PF08eJFDgsLo1mzZonneTRy5Ei6d+8eJycny4MHD5QW3bhxw/T09MjHjx/5+vXrrAPBiJKSkujhw4cEFmTevXvHhw8fNsXFxTJz5kw7btw4iYqKItd16cWLFz79q1evmidPnpAxhhYuXEiO49Dz58+Nnps4cSJZa+nSpUsG3wXM6dOnnXnz5lmFn5+fzzoAAvuToZltaWnhnz9/Ms6obtLY2Ohrp7SVCS4maG2ysrLsjx8/PLN8+XJPRGj//v0GLguoyZ8/fxh6GWhCiYmJsmPHjn6Ypy67MI/+/v1LkEliY2MpPj6eIiIiJDw8XDW1DhBEbtiwwdbV1fHq1avl1q1b9OjRI7No0SKrWiEaZsKECT4aNU9pPn782Lx//57//fsnuISrq6tdyOJ8/fpVHEwNuXPnDldUVDC+9HP26dMnfTEuN8+ePXOam5tNbW0tr1q1ync0GAwSALhz5syxJSUlZt26dV50dLS9du2aw5g0eOvWrb7IM2bMsBqbadOm2d7eXoaGosM6OjpoyZIlAkSKnoGQ1byTJ0/SsmXLGMj5xIkT3po1a1xnxIgRoUrt1KlT9uDBgy40sbdv33bWrl1rFRWEJkRLKisrTXd3t7oqBw4ckKKiIretrU0U7YABA0hjBGCe+T+g/O3bN92OfvxnXTWNwpEjR/zD58+fdxAhB8GX+/fva/AZdL0FCxZIbm6uDBo0SNavX2/VXAcXROhOnj17Vpqamlipf/78mZFJDbCfMYSZdXfBhgoLC41qjXwyokK6DKBNmZmZAeTQGg1rRkaGMLMWgWAzLIrA7tq1ywUtJy8vj5XqzZs3TWtrKyEeDoaRrmJBQYHRoZAhAK2DykYfCNV2GThwoO9ufX29UZFXrlzp4SGGngTjDHbVw04HQD8I8ximCRBLf3+/XxZIA+GsceBU+LBhwwQf8JYtWwihFiAU5NPfDL00JyfHoqYIUtDmzZvl+PHj/PbtW46JiVEJAnDXQ259hi4gix4MCQmhCxcuECpMne5funSp7jAh9H6oUVG0YsUKv4VUX+hmUCDOvn37ggpGfdBqc7CXYdoSSLvRiGDFNG+M1Gu/sZqCiuOamhqDVpGjR4+a3bt3+wWBC63qNn/+fNJW0hefO3cuCnlSuHTs2DGGoz4qFR3RYEz3u2/s2LG6Yv573WdQd/VS3RJ9JiUlRbSdHHwQpnChiXaa2blzp/8TgPeM3LG2ijYKzujPAqelpQUQdKvbhCGC6IjKhfpi7dL/BBgANRD3AUgUyOAAAAAASUVORK5CYII=) repeat;
+@mixin auto-pref-kf($key-name) {
+	@keyframes #{$key-name} {
+		@content;
+	}
+	@-ms-keyframes #{$key-name} {
+		@content;
+	}
+	@-moz-keyframes #{$key-name} {
+		@content;
+	}
+	@-webkit-keyframes #{$key-name} {
+		@content;
+	}
 }
 
-
-/* === ie7,8 opacity fix === */
-@mixin opa($modLevel,$regLevel) {
-	-ms-filter: "alpha(opacity="$regLevel")";
-	zoom: 1\9;
-	-moz-opacity: $modlevel;                 /* FF lt 1.5, Netscape */
-	-khtml-opacity: $modlevel;              /* Safari 1.x */
-	opacity: $modlevel;
+// white-page
+@mixin white-page($rotate,$hov-rotate) {
+	&:before {
+		content: '';
+		width: inherit;
+		height: 100%;
+		position: absolute;
+		transform: rotateY($rotate);
+		transform-origin: left;
+		background: silver;
+		transition: all .8s ease-out,z-index .6s ease;
+	}
+	> .detail {
+		&:before {
+			content: '';
+			width: inherit;
+			height: 100%;
+			position: absolute;
+			transform: rotateY(($rotate * 0.6));
+			transform-origin: left;
+			background: gray;
+			transition: all .8s ease-out,z-index .6s ease;
+		}
+	}
+	&:hover {
+		&:before {
+			transform: rotateY($hov-rotate);
+		}
+		> .detail {
+			&:before {
+				transform: rotateY(($hov-rotate * 0.6));
+			}
+		}
+	}
 }
 
-/* === ie7,8 min-height === */
-@mixin min-h($mnh-size){
-	min-height: $mnh-size+px;
-	height: auto!important;
-	height: $mnh-size+px;
-}
-
-
-/* ==============================
-			extends
-============================== */
+// ----------------------------------------------------------
+//		Extend
+//----------------------------------------------------------
 %ta {
 	text-indent: 100%;
 	white-space: nowrap;
 	overflow: hidden;
-}/* !!!ie7 not works!!! */
+}// !!!ie7 not works!!!
 
-%setsvg{
-	background: url(../images/common/set.svg) no-repeat;
+%pseudo-side-panel {
+	content: '';
+	position: absolute;
+	width: 100px;
+	height: 100%;
+	background: $side;
 }
 
-/* ----------------------------------------------------------
-						web fonts
----------------------------------------------------------- */
+%pseudo-back-panel {
+	content: '';
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background: $back-panel;
+}
 
+.ff-stark {
+  font-family: 'Stark', sans-serif;
+  font-weight: 100;
+}
 
-/* ----------------------------------------------------------
-						fix
----------------------------------------------------------- */
+.ff-tend {
+  font-family: 'tenderness';
+  font-weight: 100;
+}
+
+.letter-press {
+	text-shadow: -1px -1px 2px $head;
+}
+
+// ----------------------------------------------------------
+//		Web fonts
+//----------------------------------------------------------
+@font-face {
+  font-family: 'Stark';
+  //src: url('../fonts/*.eot');
+  src: url('../fonts/Stark.otf') format('opentype');
+}
+@font-face {
+  font-family: 'tenderness';
+  //src: url('../fonts/*.eot');
+  src: url('../fonts/tenderness.otf') format('opentype');
+}
+
+// ----------------------------------------------------------
+//		Fix Prop
+//----------------------------------------------------------
 
 a {
 	text-decoration: none;
