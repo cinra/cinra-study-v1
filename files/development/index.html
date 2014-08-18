@@ -17,28 +17,24 @@
 <!--<link rel="shortcut icon" type="image/x-icon" href="/assets/images/common/fabi.ico" sizes="16x16" />-->
 		<link href='http://fonts.googleapis.com/css?family=Open+Sans' type='text/css' js="Async_wf">
 		<link rel="stylesheet" href="assets/css/common.min.css" />
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-	<script src="assets/js/script.min.js"></script>
-	<script>/* sample */</script>
 </head>
 <body>
 
 <header id="head">
-		<div class="logo">Logo</div>
+		<div class="logo">Title</div>
 	<nav id="g-nav">
 		<ul class="menu">
 			<li><a href="#">&nbsp;</a></li>
 			<li><a href="#">&nbsp;</a></li>
 			<li><a href="#">&nbsp;</a></li>
-			<li><a href="#">&nbsp;</a></li>
+			<li class="select"><a href="#" data-icon="&#711;">Select</a></li>
 		</ul>
 	</nav>
 </header>
 
 <div id="wrapper">
-
   <div id="nav-panel">
-    <ul>
+    <ul id="controller">
       <li>
         <a href="#"></a>
       </li>
@@ -47,8 +43,10 @@
       </li>
     </ul>
   </div>
-
-
+  <div id="pjax-test">pjax test</div>
+  <div id="contents">
+    aaa
+  </div><!--contents-->
 
 	<div id="archive-stand">
 		<section class="shelf">
@@ -57,17 +55,75 @@
 					<figure class="item">
 						<div class="detail">
               <div class="detail-in">
-                <div class="photo"></div>
-                <h2>title</h2>
-                <p>sample text sample text sample text sample text </p>
+                <div class="photo"><a href="" class="pjax">change</a></div>
               </div>
 						</div>
 					</figure>
 				</li>
 			</ul>
 		</section>
-	</div>
+		<section class="shelf">
+			<ul class="item-list">
+				<li>
+					<figure class="item">
+						<div class="detail">
+              <div class="detail-in">
+                <div class="photo">pjax test</div>
+              </div>
+						</div>
+					</figure>
+				</li>
+			</ul>
+		</section>
+		<section class="shelf">
+			<ul class="item-list">
+				<li>
+					<figure class="item">
+						<div class="detail">
+              <div class="detail-in">
+                <div class="photo"></div>
+
+              </div>
+						</div>
+					</figure>
+				</li>
+			</ul>
+		</section>
+		<section class="shelf">
+			<ul class="item-list">
+				<li>
+					<figure class="item">
+						<div class="detail">
+              <div class="detail-in">
+                <div class="photo"></div>
+              </div>
+						</div>
+					</figure>
+				</li>
+			</ul>
+		</section>
+		<section class="shelf">
+			<ul class="item-list">
+				<li>
+					<figure class="item">
+						<div class="detail">
+              <div class="detail-in">
+                <div class="photo"></div>
+              </div>
+						</div>
+					</figure>
+				</li>
+			</ul>
+		</section>
+	</div><!--archive-stand-->
 </div><!--wrapper-->
+
+
+
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script src="assets/js/jquery.pjax.min.js"></script>
+<script src="assets/js/script.min.js"></script>
 <!--
 	twitter
 	<a href="https://twitter.com/share" class="twitter-share-button" data-lang="ja" data-hashtags="furikanR">ツイート</a>

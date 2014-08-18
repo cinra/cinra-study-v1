@@ -1,4 +1,5 @@
 @import 'base.scss';
+@import 'animate';
 
 html,body {
 	width:100%;
@@ -9,7 +10,7 @@ html,body {
 #head {
   position: relative;
   min-height: 60px;
-  background: linear-gradient($head-high-light 0%, $head 80%, $head-deep-shadow 100%);
+  background: linear-gradient($head-high-light 0%, $head 67%, $head-deep-shadow 100%);
   @extend .ff-tend;
   box-shadow:0px 6px 5px -5px rgba($head-deep-shadow, .9);
   z-index: 10;
@@ -41,6 +42,7 @@ html,body {
           border-top:1px solid rgba($head-white, .8);
           box-shadow: 0px 0px 0px 1px #000,0px 0px 0px 1px $head-white;
           @extend .letter-press;
+          @extend %iconfont-set;
           font-size: 24px;
           &:active {
             background: linear-gradient($head 0%, $head-deep-shadow 100%);
@@ -55,66 +57,51 @@ html,body {
   position: relative;
   width: 100%;
   height: 100%;
-  padding: 0 10px;
-  box-sizing: border-box;
-	&:before,&:after {
-		//@extend %pseudo-side-panel;
-    content: '';
-    position: absolute;
-    top: 0;
-    width: 10%;
-    height: 100%;
-    background: $wood-shadow-low; // fallback
-    background: -moz-linear-gradient(left, $wood-shadow-high 0%, $wood-shadow-low 100%); // FF3.6+
-    background: -webkit-gradient(linear, left top, right top, color-stop(0%,$wood-shadow-high), color-stop(100%,$wood-shadow-low)); // Chrome,Safari4+
-    background: -webkit-linear-gradient(left, $wood-shadow-high 0%,$wood-shadow-low 100%); //Chrome10+,Safari5.1+ 
-    background: -o-linear-gradient(left, $wood-shadow-high 0%,$wood-shadow-low 100%); // Opera 11.10+
-    background: -ms-linear-gradient(left, $wood-shadow-high 0%,$wood-shadow-low 100%); // IE10+
-    background: linear-gradient(to right, $wood-shadow-high 0%,$wood-shadow-low 100%); // W3C
-    z-index: -1;
-	}
-  &:before {
-    transform: rotateY(30deg) translateX(-30%);
-  }
-  &:after {
-    transform: rotateY(-30deg) translateX(30%);
-    right: 0;
-  }
-
   #nav-panel {
-    position: relative;
-    min-height: 50px;
+    position: absolute;
+    width: 100%;
     background: $wood; 
-    box-shadow: 0px 20px 26px -10px $wood-deep-shadow;
+    box-shadow: 0px 20px 26px -14px $wood-deep-shadow;
     z-index: 6;
+    @include auto-prefix(transition, .9s ease, transform);
+    @include auto-prefix(transform-origin,top center);
+    @include auto-prefix(transform,perspective(900) rotateX(-90deg));
+    #controller {
+      min-height: 50px;
+    }
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 	#archive-stand {
 		position: relative;
+    opacity: 0;
+    //height: 100%;
+    padding: 36px 10px 10px;
+    box-sizing: border-box;
 		transform-style: preserve-3d;
 		perspective: 800px;
-		min-height: 100px;
-		&:before {
-			transform: rotateY(-90deg);
-		}
-		&:after {
-			top:0;
-			right: 0;
-			transform: rotateY(90deg);
-		}
+    transition: opacity .8s ease-out .3s;
+  	&:before,&:after {
+  		//@extend %pseudo-side-panel;
+      content: '';
+      position: absolute;
+      top: 0;
+      width: 5%;
+      height: 100%;
+      background: $wood-shadow-low; // fallback
+      background: -moz-linear-gradient(left, $wood-shadow-high 0%, $wood-shadow-low 100%); // FF3.6+
+      background: -webkit-gradient(linear, left top, right top, color-stop(0%,$wood-shadow-high), color-stop(100%,$wood-shadow-low)); // Chrome,Safari4+
+      background: -webkit-linear-gradient(left, $wood-shadow-high 0%,$wood-shadow-low 100%); //Chrome10+,Safari5.1+ 
+      background: -o-linear-gradient(left, $wood-shadow-high 0%,$wood-shadow-low 100%); // Opera 11.10+
+      background: -ms-linear-gradient(left, $wood-shadow-high 0%,$wood-shadow-low 100%); // IE10+
+      background: linear-gradient(to right, $wood-shadow-high 0%,$wood-shadow-low 100%); // W3C
+      z-index: -1;
+  	}
+    &:before {
+      left: 0;
+    }
+    &:after {
+      right: 0;
+    }
+
 		.shelf {
 			transform-style: preserve-3d;
 			perspective: 800px;
@@ -124,19 +111,21 @@ html,body {
 				@extend %pseudo-back-panel;
 			}
 			&:before {
-
-				transform: rotateX(10deg) translateY(-10px) translateZ(-10px);
-				box-shadow: inset 0px 13px 10px 7px rgba(64, 28, 7, .5),
-							inset 0px 26px 32px 8px rgba(123, 83, 46, 0.9);
+        width: 99%;
+        left: 50%;
+				transform: rotateX(10deg) translateX(-50%) translateZ(-10px);
+				//box-shadow: inset 0px 13px 10px 7px rgba(64, 28, 7, .5),
+				//			inset 0px 26px 32px 8px rgba(123, 83, 46, 0.9);
+				box-shadow: inset 0 -4px 4px -2px rgba(64, 28, 7, .5);
 			}
 			&:after {
 				height: 10px;
-				bottom: 0;
+				//bottom: 0;
 				border-radius: 2px;
         //background: linear-gradient($wood-shadow-high 0%, $wood 100%);
 			}
 			.item-list {
-				padding: 20px 100px 10px;
+				padding: 20px 100px 0;
 				@extend .cf;
 				li {
 					float: left;
@@ -159,6 +148,23 @@ html,body {
 					}//.item
 				}
 			}//.item-list
+      + .shelf {
+  			&:before {
+  				box-shadow: inset 0 -4px 4px -2px rgba(64, 28, 7, .5),
+  				            inset 0 12px 10px -2px rgba(64,28,7,.5);
+  			}
+      }
 		}//.shelf
 	}//archive-stand
+
+  &.archives {
+    #nav-panel {
+      //@include auto-prefix(animation,nav-panel-open 1s ease normal 1 forwards);
+      @include auto-prefix(transform,perspective(900) rotateX(0deg));
+    }
+    #archive-stand {
+      //@include auto-prefix(animation,shelf-in .8s ease-out 1s normal 1 forwards);
+      opacity: 1;
+    }
+  }
 }//wrapper

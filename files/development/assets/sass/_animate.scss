@@ -1,0 +1,14 @@
+@include auto-pref-kf(shelf-in) {
+  to {
+    opacity: 1;
+  }
+}
+
+@include auto-pref-kf(nav-panel-open) {
+  0% {
+    @include auto-prefix(transform,perspective(900) rotateX(-90deg));
+  }
+  100% {
+    @include auto-prefix(transform,perspective(900) rotateX(0deg));
+  }
+}
