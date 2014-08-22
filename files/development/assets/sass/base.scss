@@ -43,6 +43,9 @@ $head-high-light: lighten($head,16%);
 
 $head-white: lighten($head,50%);
 
+$head-text: lighten($head,16%);
+$head-text-act: lighten($head,8%);
+
 $wood: #e4ceb3;
 //$wood: #c59a6c;
 //$wood-shadow-high: darken($wood,30%);
@@ -51,6 +54,9 @@ $wood-shadow-high: darken($wood,60%);
 $wood-shadow-low: darken($wood,60%);
 
 $wood-deep-shadow: darken($wood,60%);
+
+$gray: lighten(#000,66%);
+
 // ----------------------------------------------------------
 //		Mixin
 //----------------------------------------------------------
@@ -233,6 +239,13 @@ $prefix-list: '', -ms-, -moz-, -webkit-;
 // ----------------------------------------------------------
 //		Fix Prop
 //----------------------------------------------------------
+
+input {
+  border-radius: 100px;
+  border: none;
+  outline: none;
+  box-shadow: inset 0 0 3px 1px $gray;
+}
 
 a {
 	text-decoration: none;

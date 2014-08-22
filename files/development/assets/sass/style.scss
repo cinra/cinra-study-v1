@@ -36,7 +36,7 @@ html,body {
           display: block;
           width: 40px;
           min-height: 40px;
-					color: #fff;
+					color: $head-text;
 					background: linear-gradient($head-light 0%, $head-shadow 100%);
           border-radius: 4px;
           border-top:1px solid rgba($head-white, .8);
@@ -46,6 +46,8 @@ html,body {
           font-size: 24px;
           &:active {
             background: linear-gradient($head 0%, $head-deep-shadow 100%);
+            border-top-color: $head-shadow;
+            color: $head-text-act;
           }
 				}
 			}
@@ -66,6 +68,10 @@ html,body {
     @include auto-prefix(transition, .9s ease, transform);
     @include auto-prefix(transform-origin,top center);
     @include auto-prefix(transform,perspective(900) rotateX(-90deg));
+    #search {
+      width: 110px;
+      min-height: 24px;
+    }
     #controller {
       min-height: 50px;
     }
@@ -74,7 +80,7 @@ html,body {
 		position: relative;
     opacity: 0;
     //height: 100%;
-    padding: 36px 10px 10px;
+    padding:0 10px 10px 10px;
     box-sizing: border-box;
 		transform-style: preserve-3d;
 		perspective: 800px;

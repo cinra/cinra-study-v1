@@ -75,25 +75,25 @@ img {
   *zoom: 1;
 }
 
-/* line 179, ../sass/base.scss */
+/* line 185, ../sass/base.scss */
 .ff-stark {
   font-family: 'Stark', sans-serif;
   font-weight: 100;
 }
 
-/* line 184, ../sass/base.scss */
+/* line 190, ../sass/base.scss */
 .ff-tend {
   font-family: 'tenderness';
   font-weight: 100;
 }
 
-/* line 189, ../sass/base.scss */
+/* line 195, ../sass/base.scss */
 .ff-icon {
   font-family: 'iconfont';
   font-weight: 100;
 }
 
-/* line 194, ../sass/base.scss */
+/* line 200, ../sass/base.scss */
 .letter-press {
   text-shadow: -1px -1px 2px #223a2f;
 }
@@ -114,7 +114,15 @@ img {
   src: url("../fonts/icon/CONDENSEicon.woff") format("woff"), url("../fonts/icon/CONDENSEicon.otf") format("opentype"), url("../fonts/icon/CONDENSEicon.ttf") format("truetype");
 }
 
-/* line 237, ../sass/base.scss */
+/* line 243, ../sass/base.scss */
+input {
+  border-radius: 100px;
+  border: none;
+  outline: none;
+  box-shadow: inset 0 0 3px 1px #a8a8a8;
+}
+
+/* line 250, ../sass/base.scss */
 a {
   text-decoration: none;
   color: #000;
