@@ -44,6 +44,7 @@ html,body {
           @extend .letter-press;
           @extend %iconfont-set;
           font-size: 24px;
+          @include auto-prefix(transition, all .1s ease);
           &:active {
             background: linear-gradient($head 0%, $head-deep-shadow 100%);
             border-top-color: $head-shadow;

@@ -13,7 +13,7 @@ $(function(){
 
 
   // pjax
-  $(document).on('click', '.pjax', function(e) {
+/*  $(document).on('click', '.pjax', function(e) {
     e.preventDefault();
     $.pjax({
       container : '#pjax-test',
@@ -21,4 +21,8 @@ $(function(){
       timeout : 1000
     });
   });
+*/
+  if($.support.pjax) {
+    $(document).pjax('a[data-pjax]','#pjax-container')
+  };
 });
