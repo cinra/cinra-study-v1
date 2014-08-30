@@ -157,7 +157,6 @@ input {
   border-radius: 100px;
   border: none;
   outline: none;
-  box-shadow: inset 0 0 3px 1px #a8a8a8;
 }
 
 /* line 250, ../sass/base.scss */
@@ -367,7 +366,6 @@ html, body {
   padding: 0 10px 10px 10px;
   box-sizing: border-box;
   transform-style: preserve-3d;
-  perspective: 800px;
   transition: opacity .8s ease-out .3s;
 }
 /* line 89, ../sass/style.scss */
@@ -397,34 +395,32 @@ html, body {
 /* line 112, ../sass/style.scss */
 #wrapper #archive-stand .shelf {
   transform-style: preserve-3d;
-  perspective: 800px;
   width: 100%;
   min-height: 140px;
 }
-/* line 120, ../sass/style.scss */
+/* line 119, ../sass/style.scss */
 #wrapper #archive-stand .shelf:before {
   width: 99%;
   left: 50%;
   transform: rotateX(10deg) translateX(-50%) translateZ(-10px);
   box-shadow: inset 0 -4px 4px -2px rgba(64, 28, 7, 0.5);
 }
-/* line 128, ../sass/style.scss */
+/* line 127, ../sass/style.scss */
 #wrapper #archive-stand .shelf:after {
   height: 10px;
   border-radius: 2px;
 }
-/* line 134, ../sass/style.scss */
+/* line 133, ../sass/style.scss */
 #wrapper #archive-stand .shelf .item-list {
   padding: 20px 100px 0;
 }
-/* line 137, ../sass/style.scss */
+/* line 136, ../sass/style.scss */
 #wrapper #archive-stand .shelf .item-list li {
   float: left;
 }
-/* line 139, ../sass/style.scss */
+/* line 138, ../sass/style.scss */
 #wrapper #archive-stand .shelf .item-list li .item {
   transform-style: preserve-3d;
-  perspective: 1000px;
   width: 80px;
   min-height: 120px;
   cursor: pointer;
@@ -460,28 +456,28 @@ html, body {
 #wrapper #archive-stand .shelf .item-list li .item:hover > .detail:before {
   transform: rotateY(-75.6deg);
 }
-/* line 147, ../sass/style.scss */
+/* line 146, ../sass/style.scss */
 #wrapper #archive-stand .shelf .item-list li .item .detail {
   width: 100%;
   min-height: 120px;
   background: #e8e8e8;
 }
-/* line 151, ../sass/style.scss */
+/* line 150, ../sass/style.scss */
 #wrapper #archive-stand .shelf .item-list li .item .detail .detail-in {
   display: none;
 }
-/* line 159, ../sass/style.scss */
+/* line 158, ../sass/style.scss */
 #wrapper #archive-stand .shelf + .shelf:before {
   box-shadow: inset 0 -4px 4px -2px rgba(64, 28, 7, 0.5), inset 0 12px 10px -2px rgba(64, 28, 7, 0.5);
 }
-/* line 168, ../sass/style.scss */
+/* line 167, ../sass/style.scss */
 #wrapper.archives #nav-panel {
   transform: perspective(900) rotateX(0deg);
   -ms-transform: perspective(900) rotateX(0deg);
   -moz-transform: perspective(900) rotateX(0deg);
   -webkit-transform: perspective(900) rotateX(0deg);
 }
-/* line 172, ../sass/style.scss */
+/* line 171, ../sass/style.scss */
 #wrapper.archives #archive-stand {
   opacity: 1;
 }
